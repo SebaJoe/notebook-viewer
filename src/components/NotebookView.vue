@@ -88,6 +88,7 @@
 <script>
     import MarkCell from './MarkCell.vue'
     import download from "downloadjs";
+    import axios from 'axios';
 
     export default {
         components: {
@@ -103,6 +104,12 @@
                     alignments: [],
                 }],
                 null_val: "<|NULL|>",
+            }
+        },
+        mounted() {
+            let urlParams = new URLSearchParams(window.location.search);
+            if (urlParams.has('load')) {
+                this.load_file_from_sample(urlParams.get('load'));
             }
         },
         methods: {
@@ -133,6 +140,17 @@
                 } else {
                     this.findex = temp_val - 1;
                 }
+            },
+            load_file_from_sample(fname) {
+                console.log(fname);
+                axios.get(`https://raw.githubusercontent.com/SebaJoe/notebook-viewer/master/samples/${fname}`)
+                .then((response) => {
+                    this.parsed_file = response.data;                    
+                    //console.log(atob(response.data.content));
+                    //this.parsed_file = JSON.parse(atob(response.data.content));
+                    this.findex = 0;
+                })
+                .catch((response) => {console.log(response);});
             },
             readfile() {
                 this.file = this.$refs.doc.files[0];
