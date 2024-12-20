@@ -28,7 +28,7 @@
             <button class="btn btn-light" @click="toggle_button('expand')" v-if="!expand">
                 <i class="bi bi-chevron-right h4"></i>
             </button>
-            <div class="btn-group-vertical" v-else>
+            <div class="btn-group-vertical mt-2 mb-2" v-else>
                     <button class="btn btn-success" title="Star" @click="toggle_button('star')" v-if="starred">
                         <i class="bi bi-star-fill h4"></i>
                     </button>
