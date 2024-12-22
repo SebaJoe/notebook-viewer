@@ -1,16 +1,24 @@
 <template>
-    <div class="container">
-        <div class="row mt-2">
-            <div class="col">
-                <h1>Notebook Query Viewer</h1>
-            </div>
-        </div>
-        <div class="row mt-2" >
-            <div class="col">
-                This is an interface for viewing and annotating benchmark queries for notebooks.
-            </div>
-        </div>
+    <div class="container-fluid">
 
+        <div class="row bg-light p-4">
+            <div class="col">
+                <div class="row">
+                    <div class="col">
+                        <h1>Notebook Query Viewer</h1>
+                    </div>
+                </div>
+                <div class="row mt-2" >
+                    <div class="col">
+                        This is an interface for viewing and annotating benchmark queries for notebooks.
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+    </div>
+
+    <div class="container">
 
         <div class="row mt-4">
             <div class="col text-center">
