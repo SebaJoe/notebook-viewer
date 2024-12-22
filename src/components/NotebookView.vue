@@ -11,7 +11,14 @@
             </div>
         </div>
 
+
         <div class="row mt-4">
+            <div class="col text-center">
+                <h2>{{ parsed_file[findex]['title'] }}</h2>
+            </div>  
+        </div>
+
+        <div class="row mt-2">
             <div class="col-3">
                 <input class="form-control" type="file" ref="doc" @change="readfile()"/>
             </div>
@@ -99,6 +106,7 @@
                 findex: 0,
                 file: null,
                 parsed_file: [{
+                    title: "Default",
                     source: [],
                     target: [],
                     alignments: [],
