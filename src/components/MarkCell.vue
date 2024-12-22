@@ -22,7 +22,7 @@
         <div class="col border border-right bg-light" v-if="es_null && !commenting">
         </div>
         <div class="col border border-left border-3 border-info" v-if="commenting">
-            <textarea class="form-control" style="height: 100%;" @change="change_comment($event)" v-model="temp_comments" placeholder="Make your commments here..."></textarea>
+            <textarea class="form-control" style="height: 100%;" @change="change_comment($event)" v-model="temp_comments" placeholder="Make your comments here..."></textarea>
         </div>
         <div class="col-1 my-auto" v-if="!is_output">
             <button class="btn btn-light" @click="toggle_button('expand')" v-if="!expand">
