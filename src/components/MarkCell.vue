@@ -196,6 +196,9 @@
                 this.cell_indicator = this.update_colors_return();
             },
             update_colors_return() {
+                if (this.starred && this.flagged) {
+                    return "#ECD2FC";
+                }
                 if (this.flagged) {
                     return "#F9C0CB";
                 }
