@@ -11,6 +11,7 @@
                 <div class="row mt-2" >
                     <div class="col">
                         This is an interface for viewing and annotating benchmark queries for notebooks.
+                        The guidelines for completing annotations can be found <a class="link-offset-1 link-underline link-underline-opacity-0 link-underline-opacity-100-hover" href="https://docs.google.com/presentation/d/1ip0RqfWrYtriep6HTK9h7TkhKxqnXHUo4AP6vM6g2sg/edit?usp=sharing">here</a>.
                     </div>
                 </div>
             </div>
