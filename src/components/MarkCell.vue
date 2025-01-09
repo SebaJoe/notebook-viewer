@@ -106,42 +106,41 @@
             is_output: {default: false, type: Boolean},
         },
         data () {
-
             var defaults = {
-                html: true,
-                typographer: true,
-                _highlight: true, // <= THIS IS WHAT YOU NEED
-            };
+                    html: true,
+                    typographer: true,
+                    _highlight: true, // <= THIS IS WHAT YOU NEED
+                };
 
-            // and then do this:
+                // and then do this:
 
-            defaults.highlight = function (str, lang) {
-                if (lang && hljs.getLanguage(lang)) {
-                    try {
-                        return hljs.highlight(str, { language: lang }).value;
-                    } catch (__) {}
+                defaults.highlight = function (str, lang) {
+                    if (lang && hljs.getLanguage(lang)) {
+                        try {
+                            return hljs.highlight(str, { language: lang }).value;
+                        } catch (__) {}
+                    }
+
+                    return ''; // use external default escaping
                 }
 
-                return ''; // use external default escaping
-            }
+                console.log(this.edited_text);
 
-            console.log(this.edited_text);
-
-            return {
-                md_options: defaults,
-                star_val: this.starred,
-                edit_val: false,
-                gt_null: this.ground_truth === "<|NULL|>",
-                es_null: this.eval_side === "<|NULL|>",
-                edited: this.edited_text !== "<DEFAULT>",
-                temp_edits: "",
-                original_view: false,
-                output_toggle: false,
-                temp_comments: this.comments,
-                cell_indicator: this.update_colors_return(),
-                expand: false,
-                commenting: false,
-            }
+                return {
+                    md_options: defaults,
+                    star_val: this.starred,
+                    edit_val: false,
+                    gt_null: this.ground_truth === "<|NULL|>",
+                    es_null: this.eval_side === "<|NULL|>",
+                    edited: this.edited_text !== "<DEFAULT>",
+                    temp_edits: "",
+                    original_view: false,
+                    output_toggle: false,
+                    temp_comments: this.comments,
+                    cell_indicator: this.update_colors_return(),
+                    expand: false,
+                    commenting: false,
+                }
         },
         methods: {
             toggle_button(type) {

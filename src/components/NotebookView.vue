@@ -64,7 +64,7 @@
                         <i>Options</i>
                     </div>
                 </div>
-                <div v-for="alignment in parsed_file[Math.max(0, findex)]['alignments']">
+                <div v-for="(alignment, index) in parsed_file[Math.max(0, findex)]['alignments']" :key="parsed_file[Math.max(0, findex)]['title'] + index">
                     <div v-if="alignment['cell_type'] == 'markdown'">
                         <MarkCell
                             :ground_truth="(alignment['matching'][0] == -1) ? null_val : parsed_file[findex]['source'][alignment['matching'][0]]['text']"
