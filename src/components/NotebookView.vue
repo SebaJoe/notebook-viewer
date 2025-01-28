@@ -73,6 +73,7 @@
                             v-model:starred="alignment['starred']"
                             v-model:edited_text="alignment['edited_text']"
                             v-model:comments="alignment['comments']"
+                            v-model:evaluable="alignment['evaluable']"
                         />
                     </div>
                     <div v-else>
@@ -83,6 +84,7 @@
                             v-model:starred="alignment['starred']"
                             v-model:edited_text="alignment['edited_text']"
                             v-model:comments="alignment['comments']"
+                            v-model:evaluable="alignment['evaluable']"
                             is_code
                         />
                         <MarkCell
@@ -92,6 +94,7 @@
                             v-model:starred="alignment['starred']"
                             v-model:edited_text="alignment['edited_text']"
                             v-model:comments="alignment['comments']"
+                            v-model:evaluable="alignment['evaluable']"
                             is_output
                         />
                     </div>
@@ -162,7 +165,8 @@
                 console.log(fname);
                 axios.get(`https://raw.githubusercontent.com/SebaJoe/notebook-viewer/master/samples/${fname}`)
                 .then((response) => {
-                    this.parsed_file = response.data;                    
+                    this.parsed_file = response.data;
+                    this.file = { name: fname };                    
                     //console.log(atob(response.data.content));
                     //this.parsed_file = JSON.parse(atob(response.data.content));
                     this.findex = 0;

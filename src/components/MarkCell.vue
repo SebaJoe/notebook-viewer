@@ -36,6 +36,13 @@
                         <i class="bi bi-star h4"></i>
                     </button>
 
+                    <button class="btn btn-aqua" title="Evaluable" @click="toggle_button('eval')" v-if="evaluable">
+                        <i class="bi bi-patch-check-fill h4"></i>
+                    </button>
+                    <button class="btn btn-aqua" title="Evaluable" @click="toggle_button('eval')" v-else>
+                        <i class="bi bi-patch-check h4"></i>
+                    </button>
+
                     <button class="btn btn-danger" title="Flag" @click="toggle_button('flag')" v-if="flagged">
                         <i class="bi bi-flag-fill h4"></i>
                     </button>
@@ -100,6 +107,7 @@
             eval_side: { required: true, type: String},
             flagged: { required: true, default: false, type: Boolean},
             starred: { required: true, default: false, type: Boolean},
+            evaluable: {required: true, default: false, type: Boolean},
             edited_text: { required:true, type: String},
             comments: {required: true, default: "", type: String},
             is_code: {default: false, type: Boolean},
@@ -156,6 +164,12 @@
                     this.$nextTick(() => {
                         this.update_colors();
                     });
+                } else if (type === 'eval') {
+
+                    this.$emit('update:evaluable', !this.evaluable);
+                    this.$nextTick(() => {
+                        this.update_colors();
+                    });
                 } else if (type === 'edit') {
                     if (!this.edit_val) this.start_editing();
                     else this.end_editing();
@@ -195,7 +209,7 @@
                 this.cell_indicator = this.update_colors_return();
             },
             update_colors_return() {
-                if (this.starred && this.flagged) {
+                if ((this.starred || this.evaluable) && this.flagged) {
                     return "#ECD2FC";
                 }
                 if (this.flagged) {
@@ -203,6 +217,9 @@
                 }
                 if (this.starred) {
                     return "#CBF9C0";
+                }
+                if (this.evaluable) {
+                    return "#bfffe9";
                 }
                 return (this.is_code || this.is_output) ? "#EEEEEE": "#FFFFFF";
             },
@@ -223,4 +240,15 @@
     right: 10px;           /* 10px from the right */
     z-index: 10;
 }
+
+.btn-aqua {
+    background-color: #7FFFD4;
+    border: #00F4A2;
+}
+
+.btn-aqua:hover {
+    background-color: #00F4A2;
+    border: #00C684;
+}
+
 </style>
